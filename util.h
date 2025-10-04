@@ -13,20 +13,51 @@
 template <typename T>
 std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2)
 {
+  typename std::set<T>::iterator it;
+  std::set<T> result;
+
+  //if element in set one in element in set two (set one should be smaller)
+    // insert element to result set
+    //increment iterator
+
+  int size1 = s1.size();
+  int size2 = s2.size();
 
 
+  std::set<T>& smaller = (size1 <= size2)? s1:s2;
+  std::set<T>& larger = (size1 <= size2)? s2:s1;
 
 
+  for(it = smaller.begin(); it != smaller.end(); ++it)
+    {
+      if (larger.end() != larger.find(*it))
+      {
+        result.insert(*it);
+      }
+    }
 
+  return result;
 }
+
+
 template <typename T>
 std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2)
 {
+  typename std::set<T>::iterator it;
+  std::set<T> result;
 
 
+   for(it = s1.begin(); it != s1.end(); ++it)
+    {
+        result.insert(*it); 
+    }
 
+    for(it = s2.begin(); it != s2.end(); ++it)
+    {
+        result.insert(*it); 
+    }
 
-
+  return result;
 }
 
 /***********************************************/
